@@ -8,8 +8,8 @@ development:
   encoding: unicode
   database: dpa_development
   pool: 5
-  username: <%= ENV['DB_ENV_POSTGRESQL_USER'] %>
-  password: <%= ENV['DB_ENV_POSTGRESQL_PASS'] %>
+  username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
   host: <%= ENV['DB_PORT_5432_TCP_ADDR'] %>
 
 test:
@@ -17,6 +17,6 @@ test:
   encoding: unicode
   database: dpa_test
   pool: 5
-  username: <%= ENV['DB_ENV_POSTGRESQL_USER'] %>
-  password: <%= ENV['DB_ENV_POSTGRESQL_PASS'] %>
+  username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
   host: <%= ENV['DB_PORT_5432_TCP_ADDR'] %>
