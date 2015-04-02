@@ -19,7 +19,7 @@ docker tag -f <IMAGE ID> kr1sp1n/docker-rails-blog:latest
 ### Run Containers
 
 ```bash
-docker run -d --name postgres -e POSTGRES_PASSWORD=docker postgres:latest
+docker run -d --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=docker postgres:latest
 ```
 This will run the postgres container and set a password.
 
