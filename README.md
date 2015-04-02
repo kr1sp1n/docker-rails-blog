@@ -16,9 +16,14 @@ docker build -t kr1sp1n/docker-rails-blog:<NEW VERSION> .
 docker tag -f <IMAGE ID> kr1sp1n/docker-rails-blog:latest
 ```
 
-### Run Container
+### Run Containers
+
+```bash
+docker run -d --name postgres -e POSTGRES_PASSWORD=docker postgres:latest
+```
+This will run the postgres container and set a password.
 
 ```bash
 docker run --name docker-rails-blog -p 8080:3000 --link postgres:db -d kr1sp1n/docker-rails-blog:latest
 ```
-This will also link the container to a `postgres` container and give alias `db`
+This will also link the container to the postgres container and give alias `db`.
