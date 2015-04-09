@@ -1,0 +1,11 @@
+web:
+  build: .
+  links:
+    - db:db
+  ports:
+    - 3000:3000
+db:
+  image: postgres:latest
+  environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=docker
