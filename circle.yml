@@ -1,0 +1,25 @@
+machine:
+  services:
+    - docker
+  ruby:
+    version: 2.2.3
+
+dependencies:
+  override:
+    - docker info
+    - make install
+
+database:
+  override:
+    - /bin/true
+
+test:
+  override:
+    - make test
+
+# deployment:
+#   production:
+#     owner: kr1sp1n
+#     branch: [ develop, circleci ]
+#     commands:
+#       - make deploy

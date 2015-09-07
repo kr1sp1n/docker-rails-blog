@@ -1,7 +1,6 @@
 FROM rails:onbuild
-MAINTAINER Krispin Schulz <krispinone@gmail.com>
+MAINTAINER Krispin Schulz <krispin@posteo.de>
 
-# Disable bundle freeze so we can install additional gems
-RUN bundle config --global frozen 0
+ENTRYPOINT ["bundle", "exec"]
 
 EXPOSE 3000

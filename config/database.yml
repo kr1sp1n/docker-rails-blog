@@ -1,22 +1,23 @@
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  encoding: unicode
-  database: dpa_development
-  pool: 5
+  database: docker-rails-blog_development
   username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
   password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
   host: <%= ENV['DB_PORT_5432_TCP_ADDR'] %>
 
 test:
   <<: *default
-  encoding: unicode
-  database: dpa_test
-  pool: 5
-  username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
-  password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
-  host: <%= ENV['DB_PORT_5432_TCP_ADDR'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+production: &production
+  <<: *default
+  host:     <%= ENV['POSTGRESQL_ADDRESS'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
