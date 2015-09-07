@@ -20,8 +20,7 @@ all:
 	@echo "  * test  - build and test $(IMAGE)"
 
 install:
-	# needed for circleCI
-	sudo pip install -Iv docker-compose==1.3.3
+	# no need to install anything here
 
 build: Dockerfile
 	docker build -t $(IMAGE) .
@@ -33,7 +32,7 @@ push:
 	docker push $(IMAGE)
 
 test: build
-	docker-compose run app ./scripts/test_env.sh ./scripts/test.sh
+	docker-compose run -e RAILS_ENV=test app rspec
 
 deploy:
 	docker login -e $(DOCKER_EMAIL) -u $(DOCKER_USER) -p $(DOCKER_PASS)
