@@ -1,9 +1,9 @@
-app:
-  image: kr1sp1n/docker-rails-blog
-  links:
-    - db
-  ports:
-    - 3000:3000
+# app:
+#   image: kr1sp1n/docker-rails-blog
+#   links:
+#     - db
+#   ports:
+#     - 3000:3000
 
 db:
   image: postgres:9.4.4
@@ -12,3 +12,24 @@ db:
   environment:
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=docker
+
+bundle:
+  command: echo I'm a gem container and I'm very handsome
+  image: kr1sp1n/docker-rails-blog
+  volumes:
+    - /bundle
+
+app:
+  command: "bundle exec rails server -p 3000 -b 0.0.0.0"
+  image: kr1sp1n/docker-rails-blog
+  volumes:
+    - .:/app
+  volumes_from:
+    - bundle
+    # - zeus
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  env_file:
+    - ".env"
